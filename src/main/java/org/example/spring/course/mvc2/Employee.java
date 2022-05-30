@@ -1,15 +1,20 @@
 package org.example.spring.course.mvc2;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
-
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Employee {
+    @NotBlank(message = "This field must be not empty")
+    @Size(min = 2, message = "name must be min 2 symbols")
     private String name;
+    @NotBlank(message = "Print surname, please")
     private String surname;
+    @Min(value = 500, message = "salary must be greater 500")
+    @Max(value = 1000, message = "salary must be less 1001")
     private int salary;
     private String department;
     private Map<String, String> departments;
